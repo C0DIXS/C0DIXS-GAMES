@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codixs Games | Tu Portal Gamer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #6a00ff; /* Morado neón */
+            --secondary-color: #00d4ff; /* Cian neón */
+            --yt-red: #ff0000;
+            --bg-dark: #05050a;
+            --card-bg: #11111f;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(180deg, #11111f 0%, #05050a 100%);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(106, 0, 255, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Contenedor Izquierdo (YouTube) */
+        .header-left {
+            flex: 1; /* Ocupa el mismo espacio que el derecho para centrar el medio */
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .youtube-button {
+            background-color: var(--yt-red);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+            border: 1px solid transparent;
+        }
+
+        .youtube-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+            border-color: white;
+        }
+
+        /* Título Central */
+        .site-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(1.2rem, 4vw, 2.5rem); /* Ajuste automático de tamaño */
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            text-align: center;
+            background: linear-gradient(to right, #fff, var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(106, 0, 255, 0.6));
+            flex: 2; /* El título tiene más prioridad de espacio */
+        }
+
+        /* Contenedor Derecho (Logo) */
+        .header-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo-container img {
+            width: 55px;
+            height: 55px;
+            border-radius: 10px;
+            border: 2px solid var(--secondary-color);
+            object-fit: cover;
+            filter: drop-shadow(0 0 5px var(--secondary-color));
+            transition: 0.3s;
+        }
+
+        .logo-container img:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background: rgba(17, 17, 31, 0.9);
+            text-align: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- CONTENIDO --- */
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--secondary-color);
+            margin-right: 15px;
+        }
+
+        .line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--secondary-color), transparent);
+        }
+
+        /* --- GRID DE JUEGOS --- */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(106, 0, 255, 0.2);
+        }
+
+        .game-thumb {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px;
+        }
+
+        .game-info h3 {
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .category-tag {
+            font-size: 0.7rem;
+            color: var(--secondary-color);
+            background: rgba(0, 212, 255, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .play-btn {
+            display: block;
+            background: linear-gradient(45deg, var(--primary-color), #8a2be2);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .play-btn:hover {
+            filter: brightness(1.2);
+        }
+
+        /* --- MÓVIL --- */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .header-left, .header-right { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <a href="https://youtube.com/@franciscovillac?si=0hP30XTiwf3mJqu-" target="_blank" class="youtube-button">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                YOUTUBE
+            </a>
+        </div>
+
+        <h1 class="site-title">CODIXS GAMES</h1>
+
+        <div class="header-right">
+            <div class="logo-container">
+                <img src="logoi.png" alt="Logo Codixs">
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#">Populares</a>
+        <a href="#">Nuevos</a>
+        <a href="#">Categorías</a>
+    </nav>
+
+    <main class="main-container">
+        
+        <div class="section-header">
+            <h2>¡BIENVENIDO!</h2>
+            <div class="line"></div>
+        </div>
+        
+        <div class="game-grid">
+            <article class="game-card">
+                <img src="https://th.bing.com/th/id/OIP.CFhpxyxdl-SodmsIe8zMzQHaEK?w=316&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" alt="KOF 2002" class="game-thumb">
+                <div class="game-info">
+                    <span class="category-tag">Pelea</span>
+                    <h3>THE KING OF FIGHTER 2002</h3>
+                    <a href="KOF2002.html" class="play-btn">JUGAR AHORA</a>
+                </div>
+            </article>
+
+            <article class="game-card">
+                <img src="https://th.bing.com/th/id/OIP.chGlo7cxuXWfVNdzmX2DEAHaHa?w=211&h=211&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3" alt="KOF 2005" class="game-thumb">
+                <div class="game-info">
+                    <span class="category-tag">Pelea</span>
+                    <h3>THE KING OF FIGHTERS 2005</h3>
+                    <a href="kof2005.html" class="play-btn">JUGAR AHORA</a>
+                </div>
+            </article>
+
+            <article class="game-card">
+                <img src="MARVELVSCAPCOM.png" alt="MvC" class="game-thumb">
+                <div class="game-info">
+                    <span class="category-tag">Pelea</span>
+                    <h3>MARVEL  VS CAPCOM 1998 </h3>
+                    <a href="MARVELVSCAP.html" class="play-btn">JUGAR AHORA</a>
+                </div>
+            </article>
+
+            <article class="game-card">
+                <img src="https://th.bing.com/th/id/OIP.nsnJHUrHjB-dLqI9FjiJrwHaFA?w=265&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3" alt="Marvel vs Street" class="game-thumb">
+                <div class="game-info">
+                    <span class="category-tag">Pelea</span>
+                    <h3>MARVEL vs STREET FIGHTER</h3>
+                    <a href="marvelsuperheroresvsstreey.html" class="play-btn">JUGAR AHORA</a>
+                </div>
+            </article>
+        </div>
+
+    </main>
+
+    <footer style="text-align: center; padding: 40px; color: #555; font-size: 0.9rem;">
+        &copy; 2026 CODIXS GAMES - Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>
